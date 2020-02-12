@@ -1,5 +1,5 @@
 {
-  "name": "node-send-sms-during-a-call-tutorial",
+  "name": "node-receive-a-message-tutorial",
   "version": "1.0.0",
   "dependencies": {
     "@freeclimb/sdk": "^1.0.0",
