@@ -11,6 +11,8 @@ const authToken = process.env.AUTH_TOKEN
 const freeclimb = freeclimbSDK(accountId, authToken)
 
 app.post('/incomingSms', (req, res) => {
+  let to = 'example to number'
+  let from = 'example from number'
   freeclimb.api.messages.create(from, to, 'Hey! It is your application!').catch(err => {console.log(err)})
 })
 
