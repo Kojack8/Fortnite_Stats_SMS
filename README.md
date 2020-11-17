@@ -33,6 +33,6 @@ To get started using a FreeClimb account, follow the instructions [here](https:/
    $ node receiveMessage.js
    ```
 
-##Getting Help
+## Getting Help
 
 If you are experiencing difficulties, [contact support](https://freeclimb.com/support).
