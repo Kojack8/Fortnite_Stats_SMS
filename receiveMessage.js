@@ -13,8 +13,8 @@ const freeclimb = freeclimbSDK(accountId, authToken)
 app.post('/incomingSms', (req, res) => {
   let to = '+17734138744'
   let from = '+19737185938'
-  console.log(req['body']['text'])
-  freeclimb.api.messages.create(from, to, 'Good afternoon, Mr.Hunt').catch(err => {console.log(err)})
+  const name = verify_name(req['body']['text'])
+  freeclimb.api.messages.create(from, to, `Good afternoon, Mr. ${name}`).catch(err => {console.log(err)})
 })
 
 // Specify this route with 'Status Callback URL' in App Config
@@ -26,3 +26,11 @@ app.post('/status', (req, res) => {
 app.listen(port, () => {
   console.log(`Starting server on ${port}`)
 })
+
+function verify_name(str){
+  if (str.length < 3 || str.length > 16){
+    return null 
+  } else {
+    return str
+  }
+}
