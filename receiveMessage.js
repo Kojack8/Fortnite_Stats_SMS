@@ -14,7 +14,11 @@ app.post('/incomingSms', (req, res) => {
   let to = '+17734138744'
   let from = '+19737185938'
   const name = verify_name(req['body']['text'])
-  freeclimb.api.messages.create(from, to, `Good afternoon, Mr. ${name}`).catch(err => {console.log(err)})
+  if (name == null) {
+    freeclimb.api.messages.create(from, to, 'You\'ve enterted an invalid Epic name. Please try again.').catch(err => {console.log(err)})
+  } else {
+    freeclimb.api.messages.create(from, to, `Good afternoon, Mr. ${name}`).catch(err => {console.log(err)})
+  }
 })
 
 // Specify this route with 'Status Callback URL' in App Config
@@ -28,7 +32,8 @@ app.listen(port, () => {
 })
 
 function verify_name(str){
-  if (str.length < 3 || str.length > 16){
+  const regex = /^[a-zA-Z0-9._-]+$/
+  if (str.length < 3 || str.length > 16 || regex.test(str) == false ){
     return null 
   } else {
     return str
