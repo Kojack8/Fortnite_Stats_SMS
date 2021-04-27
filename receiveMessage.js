@@ -26,12 +26,13 @@ app.post('/incomingSms', (req, res) => {
     });
       response.then(function (response) {
         // handle success
-        console.log('````````')
-        console.log('Response')
-        //freeclimb.api.messages.create(from, to, response['data']['data']).catch(err => {console.log(err)})
         const userStats = new UserStats(response['data']['data'])
-        const msg = `Name: ${userStats.name}`
-        console.log(msg)
+        const msg = `Name: ${userStats.name}\nLevel: ${userStats.level}\nOverall Score: ${userStats.overallScore}\n` +
+        `Overall Wins: ${userStats.overallWins}\nOverall Kills: ${userStats.overallKills}\nOverall Kills/Match: ${userStats.overallKillsPerMatch}\n` +
+        `Overall Deaths: ${userStats.overallDeaths}\nOverall Kill/Death: ${userStats.overallKD}\nOverall Matches: ${userStats.overallMatches}\n` +
+        `Overall Win Rate: ${userStats.overallWinRate}\nOverall Minutes: ${userStats.overallMinutes}`
+        freeclimb.api.messages.create(from, to, msg).catch(err => {console.log(err)})
+
 
       })
       .catch(function (error) {
