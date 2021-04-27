@@ -13,6 +13,7 @@ const freeclimb = freeclimbSDK(accountId, authToken)
 app.post('/incomingSms', (req, res) => {
   let to = '+17734138744'
   let from = '+19737185938'
+  console.log(req['body']['text'])
   freeclimb.api.messages.create(from, to, 'Good afternoon, Mr.Hunt').catch(err => {console.log(err)})
 })
 
