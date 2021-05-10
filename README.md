@@ -54,12 +54,13 @@ Copy your Ngrok forwarding address and go to your application dashboard
 ```http
 https://freeclimb.com/dashboard/portal/applications
 ```
-Click "Edit Config" and paste the address under SMS URL and add the route /incomingSms
+Click "Edit Config" and paste the address under SMS URL and add the route /incomingSms <br/>
+You may have to update this any time you relaunch Ngrok
 ```http
 http://d9551329520c.ngrok.io/incomingSms (EXAMPLE)
 ```
 Start
 ```js
-$ node receiveMessage.js 
+$ node epicSMS.js 
 ```
 Text your FreeClimb phone number with a valid Epic username
