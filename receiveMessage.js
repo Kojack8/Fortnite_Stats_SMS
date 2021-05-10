@@ -12,8 +12,8 @@ const authToken = process.env.AUTH_TOKEN
 const freeclimb = freeclimbSDK(accountId, authToken)
 
 app.post('/incomingSms', (req, res) => {
-  let to = '+17734138744'
-  let from = '+19737185938'
+  let to = req['body']['from']
+  let from = process.env.MY_FREECLIMB_NUMBER
   const name = verify_name(req['body']['text'])
   if (name == null) {
     freeclimb.api.messages.create(from, to, 'You\'ve enterted an invalid Epic name. Please try again.').catch(err => {console.log(err)})
