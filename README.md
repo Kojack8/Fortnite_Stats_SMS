@@ -18,20 +18,13 @@ be publically available or incomplete.
 FreeClimb API is a premium service that requires free trial users to verify their 
 phone number before use, as a result, a live demo is unavailable for this project.
 
-
-
-
 ## Screenshots 
 
 <img src="./static/IMG_1291.PNG" width="400">
 <img src="./static/IMG_1292.PNG" width="400">
 
-
-
-
-
 ***
-## Installation 
+## Installation & Quick Start
 
 Clone the repo to your local machine: 
 ```js
@@ -45,11 +38,28 @@ Install the needed dependencies:
 ```js
 $ npm install
 ```
-Start:
-```js
-$ npm start
+Make a Freeclimb Trial Account
+```http
+https://www.freeclimb.com/
 ```
-Open browser to view application:
-```js
-localhost:3000
+Set .env variables using .env.template
 ```
+BE CAREFUL NOT TO MAKE ANY SECRET KEYS PUBLICLY AVAILABLE 
+```
+Tunnel your local port using Ngrok
+```js
+./ngrok http 3000
+```
+Copy your Ngrok forwarding address and go to your application dashboard
+```http
+https://freeclimb.com/dashboard/portal/applications
+```
+Click "Edit Config" and paste the address under SMS URL and add the route /incomingSms
+```http
+http://d9551329520c.ngrok.io/incomingSms (EXAMPLE)
+```
+Start
+```js
+$ node receiveMessage.js 
+```
+Text your FreeClimb phone number with a valid Epic username
